@@ -116,11 +116,14 @@ $ ~/.acme.sh/acme.sh --renew -d mydomain.com --force --ecc
 
 ### 安装证书和密钥
 
-将证书和密钥安装到 /etc/v2ray 中：
+将证书和密钥安装到 /etc/v2ray 中并给予权限：
+
 ```plain
 $ sudo ~/.acme.sh/acme.sh --installcert -d mydomain.me --ecc \
                           --fullchain-file /etc/v2ray/v2ray.crt \
                           --key-file /etc/v2ray/v2ray.key
+                          chmod 777 /usr/local/etc/v2ray/v2ray.key
+                          chmod 777 /usr/local/etc/v2ray/v2ray.crt
 ```
 
 **注意：无论什么情况，密钥(即上面的 v2ray.key)都不能泄漏，如果你不幸泄漏了密钥，可以使用 acme.sh 将原证书吊销，再生成新的证书，吊销方法请自行参考 [acme.sh 的手册](https://github.com/Neilpang/acme.sh/wiki/Options-and-Params)**
